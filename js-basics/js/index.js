@@ -2,17 +2,20 @@
 let num1 = 0;
 let num2 = 0;
 let symbolPressed = false ; 
+let symbol = 0;
 repeat= false;
 let allBtns = document.querySelectorAll(".btns button")
 let display = document.querySelector("#display") //document.getElementById("display")
+
 allBtns.forEach((btn)=> {
     btn.addEventListener("click", (event)=>{
-       // console.log(label.textContent)
         const text = event.target.textContent ;
         display.textContent += text
+        if (display.textContent.startsWith("0") && display.textContent.length >= 2){
+            display.textContent = display.textContent.substr(1,display.textContent.length);
+            console.log("happens" ,display.textContent+"43",)
+        }
 
-        
-       //if ( (Number.isInteger(parseInt(text)) ) && symbolPressed == false && Number.isInteger(Number(display.textContent))){  
         if ( (Number.isInteger(Number(text)) ) && symbolPressed == false)
             num1 = Number(display.textContent)
         else if(Number.isInteger( Number.parseInt(text) ) && symbolPressed == true)  
