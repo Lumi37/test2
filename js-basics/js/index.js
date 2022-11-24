@@ -13,7 +13,7 @@ allBtns.forEach((btn)=> {
         display.textContent += text
         if (display.textContent.startsWith("0") && display.textContent.length >= 2){
             display.textContent = display.textContent.substr(1,display.textContent.length);
-            console.log("happens" ,display.textContent+"43",)
+            console.log("happens")
         }
 
         if ( (Number.isInteger(Number(text)) ) && symbolPressed == false)
