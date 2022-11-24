@@ -18,138 +18,148 @@ allBtns.forEach((btn)=> {
         else if(Number.isInteger( Number.parseInt(text) ) && symbolPressed == true)  
             num2 = Number(display.textContent)
         
-        if (text === "+"){
-            symbolPressed = true ;
-            symbol = "+";
-            display.textContent = "0";
-            console.log(symbol)
-            
-        }
-
-        if (text === "-"){
-            symbolPressed = true ;
-            symbol = "-";
-            display.textContent = "0";
-            console.log(symbol)
-        }
-
-        if (text === "X"){
-            symbolPressed = true ;
-            symbol = "X";
-            display.textContent = "0";
-            console.log(symbol)
-        }
-
-        if (text === "/"){
-            symbolPressed = true ;
-            symbol = "/";
-            display.textContent = "0";
-            console.log(symbol)
-        }
-        if (text === "x^2"){
-            symbolPressed = true ;
-            symbol = "x^2";
-            display.textContent = num1**2;
-            console.log(symbol)
-            num1 = num1**2;
-
-        }
-        if (text === "sqrt"){
-            symbolPressed = true ;
-            symbol = "sqrt";
-            display.textContent = Math.sqrt(num1);
-            num1 = Math.sqrt(num1)
-            console.log(symbol)
-        }
-        if(text === "1/x"){
-            symbolPressed = true;
-            symbol = "1/x";
-            display.textContent = 1/num1;
-            console.log(symbol)
-        }
-        if(text === "%"){
-            symbolPressed = true;
-            symbol = "%";
-            display.textContent = num1*100;
-            console.log(symbol)
-        }
-        if(text === "+/-"){
-            symbol = "+/-"
-            console.log(symbol)
-            if (num1>=0 && symbolPressed == false){
-                num1 = -num1;
-                display.textContent = num1;
-            }
-            else{
-                console.log(`${num1}-${num2}`);
-                num1 = Math.abs(num1);
-                display.textContent = num1;
-            }
-            if (num2>=0 && symbolPressed == true ){
-                console.log(`${num1}-${num2}`);
-                num2 = -num2;
-                display.textContent = num2;
-            }
-            else if( symbolPressed==true ){
-                console.log(`${num1}-${num2}`);
-                num2 = Math.abs(num2);
-                display.textContent = num2;
-            }
-            
+        switch(text){
+            case "+":
+                symbolPressed = true ;
+                symbol = "+";
+                display.textContent = "0";
+                console.log(symbol)
+                break;
+            case "-":
+                symbolPressed = true ;
+                symbol = "-";
+                display.textContent = "0";
+                console.log(symbol)
+                break;
+            case "X":
+                symbolPressed = true ;
+                symbol = "X";
+                display.textContent = "0";
+                console.log(symbol)
+                break;
+            case "/":
+                symbolPressed = true ;
+                symbol = "/";
+                display.textContent = "0";
+                console.log(symbol)
+                break;
+            case "x^2":
+                symbolPressed = true ;
+                symbol = "x^2";
+                display.textContent = num1**2;
+                console.log(symbol)
+                num1 = num1**2;
+                break;
+            case "sqrt":
+                symbolPressed = true ;
+                symbol = "sqrt";
+                display.textContent = Math.sqrt(num1);
+                num1 = Math.sqrt(num1)
+                console.log(symbol)
+                break;
+            case "1/x":
+                symbolPressed = true;
+                symbol = "1/x";
+                display.textContent = 1/num1;
+                console.log(symbol)
+                break;
+            case "%":
+                symbolPressed = true;
+                symbol = "%";
+                display.textContent = num1*100;
+                console.log(symbol)
+                break;
+            case "+/-":
+                symbol = "+/-"
+                console.log(symbol)
+                if (num1>=0 && symbolPressed == false){
+                    num1 = -num1;
+                    display.textContent = num1;
+                }
+                else{
+                    console.log(`${num1}-${num2}`);
+                    num1 = Math.abs(num1);
+                    display.textContent = num1;
+                }
+                if (num2>=0 && symbolPressed == true ){
+                    console.log(`${num1}-${num2}`);
+                    num2 = -num2;
+                    display.textContent = num2;
+                }
+                else if( symbolPressed==true ){
+                    console.log(`${num1}-${num2}`);
+                    num2 = Math.abs(num2);
+                    display.textContent = num2;
+                }
+                break;
+            default:
+                break;
         }
 
 
         if (text === "=" && symbolPressed === true && repeat === false){
             console.log("=")
             symbolPressed = false ; 
-            if(symbol === "+"){
-                console.log(`${num1}+${num2}`)
-                display.textContent = num1 + num2
-                num1+= num2
-            }
-            if(symbol === "-"){ 
-                display.textContent = num1 - num2
-                num1-= num2   
-            }        
-            if(symbol === "X"){
-                display.textContent = num1 * num2
-                num1 = num1 * num2
-            }
-            if(symbol === "/"){
-                if(num2 === 0){
-                    alert("Cant divide with 0 expected result: infinity")
+            switch (symbol){
+                case "+":
+                    console.log(`${num1}+${num2}`)
+                    display.textContent = num1 + num2
+                    num1+= num2
+                    break;
+                case "-":
+                    console.log(`${num1}-${num2}`)
+                    display.textContent = num1 - num2
+                    num1-= num2  
+                    break;
+                case "X":
+                    console.log(`${num1}x${num2}`)
+                    display.textContent = num1 * num2
+                    num1 = num1 * num2
+                    break;
+                case "/":
+                    console.log(`${num1}/${num2}`)
+                    if(num2 === 0){
+                        alert("Cant divide with 0 expected result: infinity")
+                        display.textContent = num1 / num2
+                        num1 = num1 /num2
+                    }
                     display.textContent = num1 / num2
                     num1 = num1 /num2
-                }
-            display.textContent = num1 / num2
-            num1 = num1 /num2
-            }    
-        }
+                    break;
+            }
+
+        }    
+        
         
         if (text === "=" && symbolPressed === false && repeat === true){
             console.log("=")
-            if(symbol === "+"){
-                console.log(num1 , num2 , 1/num1)
-                display.textContent = num1 + num2
-                num1+= num2
-            }
-            if(symbol === "-"){ 
-                display.textContent = num1 - num2
-                num1-= num2   
-            }        
-            if(symbol === "X"){
-                display.textContent = num1 * num2
-                num1 = num1 * num2
-            }
-            if(symbol === "/"){
-                if(num2 === 0){
-                    alert("Cant divide with 0 expected result: infinity")
+            switch (symbol){
+                case "+":
+                    console.log(`${num1}+${num2}`)
+                    display.textContent = num1 + num2
+                    num1+= num2
+                    break;
+                case "-":
+                    console.log(`${num1}-${num2}`)
+                    display.textContent = num1 - num2
+                    num1-= num2  
+                    break;
+                case "X":
+                    console.log(`${num1}x${num2}`)
+                    display.textContent = num1 * num2
+                    num1 = num1 * num2
+                    break;
+                case "/":
+                    console.log(`${num1}/${num2}`)
+                    if(num2 === 0){
+                        alert("Cant divide with 0 expected result: infinity")
+                        display.textContent = num1 / num2
+                        num1 = num1 /num2
+                    }
                     display.textContent = num1 / num2
                     num1 = num1 /num2
-                }
-            display.textContent = num1 / num2
-            num1 = num1 /num2
-            }    
+                    break;
+            }
         }
         
         if(text === "=") 
