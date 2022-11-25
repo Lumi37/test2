@@ -1,30 +1,24 @@
 //console.log(document.querySelectorAll(".btns button "))
 let num1 = 0;
 let num2 = 0;
+let temp = "";
 let symbolPressed = false;
-let symbol = 0;
+let symbol = "";
 repeat = false;
 let allBtns = document.querySelectorAll(".btns button");
 let display = document.querySelector("#display"); //document.getElementById("display")
 
 allBtns.forEach((btn) => {
   btn.addEventListener("click", (event) => {
-    const text = event.target.textContent;
+    const text = event.target.textContent; 
     display.textContent += text;
-    if (
-      display.textContent.startsWith("0") &&
-      display.textContent.length >= 2
-    ) {
-      display.textContent = display.textContent.substr(
-        1,
-        display.textContent.length
-      );
+    if ( display.textContent.startsWith("0") && display.textContent.length >= 2) {
+      display.textContent = display.textContent.substr( 1, display.textContent.length);
       console.log("happens");
     }
-    if (display.textContent)
-      if (Number.isInteger(Number(text)) && symbolPressed == false)
+    if (Number.isInteger(Number(text)) && symbolPressed == false)
         num1 = Number(display.textContent);
-      else if (Number.isInteger(Number.parseInt(text)) && symbolPressed == true)
+    else if (Number.isInteger(Number.parseInt(text)) && symbolPressed == true)
         num2 = Number(display.textContent);
 
     switch (text) {
@@ -99,6 +93,29 @@ allBtns.forEach((btn) => {
           display.textContent = num2;
         }
         break;
+      case "erase":
+        console.log("happens erase");
+        if (symbol === "") {
+          display.textContent = num1 
+          if(display.textContent.length === 1){
+            display.textContent = 0
+            num1 = 0
+          }else{
+            display.textContent = display.textContent.substr(0,display.textContent.length-1)
+            num1 = display.textContent
+          }   
+        } 
+        else{
+          display.textContent = num2
+          if(display.textContent.length === 1){
+            display.textContent = 0
+            num2 = 0
+          }else{
+            display.textContent = display.textContent.substr(0,display.textContent.length-1)
+            num2 = display.textContent
+          }
+        }
+        break;
       default:
         break;
     }
@@ -166,8 +183,10 @@ allBtns.forEach((btn) => {
       }
     }
 
-    if (text === "=") repeat = true;
-    else repeat = false;
+    if (text === "=")
+      repeat = true;
+    else 
+      repeat = false;
 
     if (text === "CE" || text === "C") {
       repeat = false;
