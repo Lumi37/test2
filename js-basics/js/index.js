@@ -7,7 +7,7 @@ let symbol = "";
 let body = document.body
 let repeat = false;
 let allBtns = document.querySelectorAll(".btns button");
-let display = document.querySelector("#display"); //document.getElementById("display")
+const display = document.querySelector("#display"); //document.getElementById("display")
 const symbolAllowance = ["1","2","3","4","5","6","7","8","9","0","-","+","/","x","*","Enter","^","%"]
 
 
