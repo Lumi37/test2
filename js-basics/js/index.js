@@ -6,13 +6,15 @@ let symbolPressed = false;
 let symbol = "";
 let body = document.body
 let repeat = false;
-let allBtns = document.querySelectorAll(".btns button");
+let allBtns = document.querySelectorAll("button");
 const display = document.querySelector("#display"); //document.getElementById("display")
 const symbolAllowance = ["1","2","3","4","5","6","7","8","9","0","-","+","/","x","*","Enter","^","%"]
+const symbolAllowance1 =  '1234567890-+*/'.split('')  //["1","2","3","4","5","6","7","8","9","0","-","+","/","x","*","Enter","^","%"]
 
 
 
-body.addEventListener("keydown",(event)=>{
+
+body.addEventListener("keydown", event => {
  // console.log(event.key)
   if (event.key === "Backspace"){
     if (symbol === "") {
